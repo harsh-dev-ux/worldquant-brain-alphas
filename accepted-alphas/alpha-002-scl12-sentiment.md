@@ -1,15 +1,19 @@
 # Alpha 002 — SCL12 Sentiment
 
-**Status:** Accepted
-**Created on BRAIN:** 2026-08-17
-
 ---
 
-## Formula
+## Approach
 
-```
-group_neutralize(scl12_buzz, bucket(rank(volume), range(0.1, 0.1)))
-```
+| Component | Description |
+|-----------|-------------|
+| **Signal Type** | Alternative Data / Social Sentiment & Liquidity Interaction |
+| **Data Fields** | SCL12 social sentiment & buzz metrics, Trading volume |
+| **Technique** | Non-linear volume decile bucketing and group neutralization |
+| **Lookback** | Intraday social buzz signal neutralized across discrete volume buckets |
+
+> 🔒 *Formula available on request — DM on LinkedIn.*
+
+---
 
 ## Settings
 
@@ -35,9 +39,9 @@ group_neutralize(scl12_buzz, bucket(rank(volume), range(0.1, 0.1)))
 | Self-Correlation (Max) | 0.1239 |
 | Self-Correlation (Min) | −0.0822 |
 
-## Logic
+## Intuition
 
-> Isolates social sentiment signal from liquidity effects by neutralizing SCL12 buzz scores across volume-based decile buckets.
+> Isolates authentic crowd sentiment by conditioning buzz metrics across volume liquidity buckets, stripping out noise from mega-cap retail attention.
 
 ---
 

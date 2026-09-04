@@ -1,16 +1,19 @@
 # Alpha 005 — FCF + Momentum
 
-**Status:** Accepted
-**Created on BRAIN:** 2026-08-27
-
 ---
 
-## Formula
+## Approach
 
-```
-a = group_rank(ts_rank(free_cash_flow_reported_value / equity, 126), industry)
-b = group_rank(ts_delta(close, 5), industry)
-```
+| Component | Description |
+|-----------|-------------|
+| **Signal Type** | Multi-Factor (Fundamental Cash Flow + Price Momentum) |
+| **Data Fields** | Free cash flow reported value, Total equity, Close prices |
+| **Technique** | Two-factor rank blending with industry group normalization |
+| **Lookback** | 126-day fundamental rank combined with 5-day delta momentum |
+
+> 🔒 *Formula available on request — DM on LinkedIn.*
+
+---
 
 ## Settings
 
@@ -36,9 +39,9 @@ b = group_rank(ts_delta(close, 5), industry)
 | Self-Correlation (Max) | 0.3734 |
 | Self-Correlation (Min) | 0.0702 |
 
-## Logic
+## Intuition
 
-> Blends fundamental free cash flow yield rank with short-term 5-day price momentum, both ranked within industry groups to capture value-momentum convergence.
+> Combines medium-term cash flow generation quality with short-term price momentum, selecting companies with both valuation support and price confirmation.
 
 ---
 

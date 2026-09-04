@@ -1,16 +1,19 @@
 # Alpha 006 — Income–Volume Blend
 
-**Status:** Accepted
-**Created on BRAIN:** 2026-08-28
-
 ---
 
-## Formula
+## Approach
 
-```
-a = 0.5 * group_rank(ts_rank(operating_income / equity, 126), subindustry)
-b = 0.5 * group_rank(ts_rank(vt_1 / close, 126), industry)
-```
+| Component | Description |
+|-----------|-------------|
+| **Signal Type** | Multi-Factor (Profitability Yield + Volume-Price Dynamics) |
+| **Data Fields** | Operating income, Total equity, Volume-price ratio series, Close prices |
+| **Technique** | Multi-level hierarchical group ranking across subindustry and industry classifications |
+| **Lookback** | 126 trading days (~6 months) |
+
+> 🔒 *Formula available on request — DM on LinkedIn.*
+
+---
 
 ## Settings
 
@@ -36,9 +39,9 @@ b = 0.5 * group_rank(ts_rank(vt_1 / close, 126), industry)
 | Self-Correlation (Max) | 0.6373 |
 | Self-Correlation (Min) | −0.0697 |
 
-## Logic
+## Intuition
 
-> Equally-weighted blend of operating income yield and a volume-price ratio signal, each ranked within subindustry and industry respectively over a 126-day window.
+> Leverages dual-horizon factor weighting combining operating earnings efficiency with volume-adjusted price trends, mitigating sector concentration.
 
 ---
 

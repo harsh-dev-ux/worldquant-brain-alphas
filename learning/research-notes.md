@@ -1,33 +1,35 @@
 # Research Notes
 
-Notes and takeaways from building alphas on WorldQuant BRAIN.
+Notes and takeaways from building quantitative alphas on WorldQuant BRAIN.
 
 ---
 
 ## General Principles
 
-- **Low self-correlation matters.** Alphas that are too autocorrelated get flagged. Decay and truncation tuning are key levers.
-- **Neutralization is not optional.** Industry or subindustry neutralization removes sector beta and makes the signal purer. Without it, you're mostly trading sector momentum.
-- **Turnover is a constraint, not just a metric.** High-turnover alphas eat into margin. The scl12 sentiment alpha runs ~60% turnover — it passed, but it's near the edge.
-- **Fundamentals are robust but slow.** Operating income, FCF, and equity-based signals are stable across years but need longer lookbacks (126–252 days) to generate meaningful rank dispersion.
+- **Low self-correlation is paramount.** Alphas that overlap with crowded factors get penalized. Decay, neutralization, and factor blending are key levers to compress correlation below 0.35.
+- **Neutralization is essential.** Subindustry and industry neutralization removes market and sector beta, ensuring you isolate pure idiosyncratic alpha rather than unintended factor bets.
+- **Turnover is a hard constraint.** High-turnover signals degrade rapidly when factoring in transaction costs and slippage. Keeping turnover under 20% preserves margin.
+- **Fundamental and alternative data synergy.** Pure price momentum degrades quickly out-of-sample; combining fundamentals (earnings, cash flow, debt) with options sentiment or microstructure yields stable, persistent signals.
 
 ## What Worked
 
-- **Bucketing volume before neutralizing sentiment** (Alpha 002) was the key insight for the scl12 alpha. Raw sentiment is noisy; conditioning on liquidity regime cleaned it up significantly.
-- **Mixing fundamental + momentum factors** (Alphas 005, 006) consistently produces better fitness than either factor alone. The group_rank within industry/subindustry is important — raw ranks leak sector exposure.
-- **Options volatility skew** (Alpha 004) is an underexplored data source on BRAIN. The call-put implied vol spread carries real signal, especially when z-scored.
+- **Variance Risk Premium Arbitrage (Alpha 008):** Contrasting forward-looking implied volatility against Parkinson realized high-low volatility in large caps (`TOP200`) generates high margins (22.79 bps) with zero decay.
+- **Analyst Consensus Smoothing & Winsorization (Alpha 009):** Smoothing forward net profit estimates with a 40-day window and winsorizing extreme analyst outliers (4.0 std) produces reliable forward earnings yield alpha with minimal turnover (4.51%).
+- **Data Quality & NaN Handling (Alphas 010 & 011):** Enabling `NaN Handling: On` for the operating cash flow yield signal dramatically improved Sharpe from 1.84 to 2.14 and Fitness from 1.22 to 1.60 by avoiding coverage drops across the TOP3000 universe.
+- **Fundamental + Derivatives Positioning Blend (Alpha 012):** Blending subindustry-ranked operating income yield with inverse options put-call open interest sentiment achieved one of the strongest portfolio performances: **2.28 Sharpe**, **1.71 Fitness**, and **28.67 bps margin** with only **5.20% turnover**.
+- **Volume-decile neutralization for sentiment (Alpha 002):** Isolating social buzz across volume buckets prevents mega-cap liquidity bias.
 
 ## What Didn't Work
 
-- Raw price momentum without any fundamental gating — high Sharpe in-sample, collapses out-of-sample.
-- Overfitting decay parameters. Started by grid-searching decay values; learned to pick a reasonable value (5–20 for most alphas) and focus on the expression instead.
-- Single-factor alphas on overcrowded fields (e.g., plain `rank(close/open)`) — too many existing alphas in those spaces, self-correlation kills them.
+- Unwinsorized forward consensus metrics: extreme analyst revisions distort cross-sectional scores and trigger heavy drawdowns without winsorization.
+- Running unneutralized sentiment or momentum signals: exposed to sharp market sector rotations.
+- Ignoring missing data imputation on universe expansions (`TOP3000`): non-handled NaNs discard viable signals and degrade backtest fidelity.
 
-## Platform Notes
+## Platform & Data Notes
 
-- Fast Expression language is sufficient for most alpha research. No need for the full expression engine unless you're doing complex multi-line logic.
-- TOP3000 universe is harder to get accepted in (more competition) but the margin tends to be higher.
-- TOP1000 is good for cleaner fundamentals since data quality is better for large caps.
+- `TOP200` universe offers cleaner options implied volatility surfaces with high liquidity and tight spreads.
+- `TOP3000` provides broad dispersion for fundamental ratios, but requires robust missing value (`NaN Handling: On`) and outlier treatment.
+- Combining options flow/positioning (`pcr_oi`, `implied_volatility`) with fundamental earnings consistently produces the lowest self-correlation against conventional price-volume alphas.
 
 ---
 

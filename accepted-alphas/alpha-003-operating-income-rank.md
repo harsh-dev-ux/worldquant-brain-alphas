@@ -1,15 +1,19 @@
 # Alpha 003 — Operating Income Rank
 
-**Status:** Accepted
-**Created on BRAIN:** 2026-08-25
-
 ---
 
-## Formula
+## Approach
 
-```
-ts_rank(operating_income / cap, 252)
-```
+| Component | Description |
+|-----------|-------------|
+| **Signal Type** | Fundamental Quality & Profitability |
+| **Data Fields** | Operating income, Market capitalization |
+| **Technique** | Time-series ranking of profitability-to-market size yield |
+| **Lookback** | 252 trading days (~1 year) |
+
+> 🔒 *Formula available on request — DM on LinkedIn.*
+
+---
 
 ## Settings
 
@@ -35,9 +39,9 @@ ts_rank(operating_income / cap, 252)
 | Self-Correlation (Max) | 0.6373 |
 | Self-Correlation (Min) | −0.0822 |
 
-## Logic
+## Intuition
 
-> Ranks stocks by operating profitability relative to market cap over a 252-day lookback, capturing persistent fundamental value with low turnover.
+> Identifies companies with sustained operating earnings yield relative to their historical baseline, harvesting low-turnover fundamental re-rating alpha.
 
 ---
 

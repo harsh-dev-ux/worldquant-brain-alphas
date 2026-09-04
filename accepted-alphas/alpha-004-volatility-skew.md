@@ -1,18 +1,19 @@
 # Alpha 004 — Volatility Skew
 
-**Status:** Accepted
-**Created on BRAIN:** 2026-08-25
-
 ---
 
-## Formula
+## Approach
 
-```
-cl04 = ts_backfill(implied_volatility_call_1m, 5);
-pl04 = ts_backfill(implied_volatility_put_04m, 5);
-skew = (cl04 - pl04);
-group_zscore(ts_mean(skew, all), industry)
-```
+| Component | Description |
+|-----------|-------------|
+| **Signal Type** | Derivatives / Options Implied Volatility Surface |
+| **Data Fields** | Implied volatility call & put surfaces |
+| **Technique** | Backfilled call-put surface spread, cross-sectional industry z-score |
+| **Lookback** | Time-series backfill & smoothing with cross-sectional normalization |
+
+> 🔒 *Formula available on request — DM on LinkedIn.*
+
+---
 
 ## Settings
 
@@ -38,9 +39,9 @@ group_zscore(ts_mean(skew, all), industry)
 | Self-Correlation (Max) | 0.2064 |
 | Self-Correlation (Min) | 0.0852 |
 
-## Logic
+## Intuition
 
-> Captures options-implied volatility skew between call and put surfaces, z-scored within industries to isolate relative mispricing in the volatility term structure.
+> Exploits pricing asymmetries between call and put implied volatility surfaces, standardizing signals across industry peers to capture volatility risk premia.
 
 ---
 

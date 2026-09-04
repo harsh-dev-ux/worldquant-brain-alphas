@@ -1,16 +1,19 @@
 # Alpha — [Name]
 
-**Status:** Accepted
-**Submitted:** YYYY-MM-DD
-**Created on BRAIN:** YYYY-MM-DD
-
 ---
 
-## Formula
+## Approach
 
-```
-[alpha expression here]
-```
+| Component | Description |
+|-----------|-------------|
+| **Signal Type** | [e.g., Fundamental / Reversion / Sentiment / Statistical Arbitrage] |
+| **Data Fields** | [Data categories / fields utilized] |
+| **Technique** | [Mathematical & statistical transformations] |
+| **Lookback** | [Lookback window & aggregation] |
+
+> 🔒 *Formula available on request — DM on LinkedIn.*
+
+---
 
 ## Settings
 
@@ -33,13 +36,11 @@
 | Sharpe | — |
 | Fitness | — |
 | Turnover | — |
-| Returns | — |
-| Drawdown | — |
 | Margin | — |
 
-## Logic
+## Intuition
 
-> One-line explanation of the intuition behind this alpha.
+> High-level explanation of the financial theory and intuition behind this signal.
 
 ---
 

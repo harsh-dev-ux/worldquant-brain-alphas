@@ -1,16 +1,19 @@
 # Alpha 001 — Market Microstructure
 
-**Status:** Accepted
-**Created on BRAIN:** 2026-08-06
-
 ---
 
-## Formula
+## Approach
 
-```
-avg_mow = vec_avg(mkt11_s1 / market_s1);
-rank(ts_sum(avg_mow, 01) > 0.5) ? rank(ts_delta(close, 5))
-```
+| Component | Description |
+|-----------|-------------|
+| **Signal Type** | Market Microstructure & Conditional Momentum |
+| **Data Fields** | Trade imbalance indicators, Volume distribution, Close price |
+| **Technique** | Vector imbalance aggregation gating short-term price momentum |
+| **Lookback** | Multi-day volume imbalance condition with short-term price delta |
+
+> 🔒 *Formula available on request — DM on LinkedIn.*
+
+---
 
 ## Settings
 
@@ -36,9 +39,9 @@ rank(ts_sum(avg_mow, 01) > 0.5) ? rank(ts_delta(close, 5))
 | Self-Correlation (Max) | 0.3734 |
 | Self-Correlation (Min) | 0.0342 |
 
-## Logic
+## Intuition
 
-> Conditional alpha using market microstructure volume imbalance to gate short-term price momentum — only trades when directional flow is present.
+> Uses market microstructure order flow and volume imbalance to gate short-term momentum — allocating only when directional institutional flow confirms the move.
 
 ---
 
