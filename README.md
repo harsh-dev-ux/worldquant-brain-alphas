@@ -4,7 +4,7 @@
 ![Silver Certificate](https://img.shields.io/badge/WQ_BRAIN-Silver_Certified-C0C0C0?style=for-the-badge&labelColor=1a1a2e)
 ![Gold Certificate](https://img.shields.io/badge/WQ_BRAIN-Gold_Certified-FFD700?style=for-the-badge&labelColor=1a1a2e)
 ![Researcher Points](https://img.shields.io/badge/Points-20%2C000%2B-0096FF?style=for-the-badge&labelColor=1a1a2e)
-![Accepted Alphas](https://img.shields.io/badge/Accepted_Alphas-15-00C853?style=for-the-badge&labelColor=1a1a2e)
+![Accepted Alphas](https://img.shields.io/badge/Accepted_Alphas-16-00C853?style=for-the-badge&labelColor=1a1a2e)
 ![License](https://img.shields.io/badge/License-All_Rights_Reserved-FF5722?style=for-the-badge&labelColor=1a1a2e)
 
 ---
@@ -43,7 +43,8 @@ worldquant-brain-alphas/
 │   ├── alpha-012-income-options-sentiment-blend.md
 │   ├── alpha-013-volume-surge-reversion.md
 │   ├── alpha-014-value-quality-blend.md
-│   └── alpha-015-largecap-value-quality.md
+│   ├── alpha-015-largecap-value-quality.md
+│   └── alpha-016-options-put-pressure.md
 └── learning/
     └── research-notes.md
 ```
@@ -69,6 +70,7 @@ worldquant-brain-alphas/
 | 013 | [Volume-Surge Reversion](accepted-alphas/alpha-013-volume-surge-reversion.md) | TOP3000 | Subindustry | 2.03 | 1.07 | 48.70% | Short-Term Price Reversion & Volume Surge |
 | 014 | [Value & Quality Blend](accepted-alphas/alpha-014-value-quality-blend.md) | TOP3000 | Subindustry | **2.65** | **2.05** | 19.79% | Book-to-Market & ROE Capital Efficiency |
 | 015 | [Large-Cap Value & Quality](accepted-alphas/alpha-015-largecap-value-quality.md) | TOP500 | Industry | 1.58 | 1.03 | 20.36% | Large-Cap Fundamental Value & Quality Blend |
+| 016 | [Options Put Pressure](accepted-alphas/alpha-016-options-put-pressure.md) | TOP3000 | None | 1.56 | 1.48 | 9.98% | Options Surface Implied Volatility Put Ratio |
 
 ---
 
@@ -88,4 +90,4 @@ This project is licensed under a proprietary **All Rights Reserved** license —
 
 ---
 
-*Last updated: 2026-09-05*
+*Last updated: 2026-09-06*
